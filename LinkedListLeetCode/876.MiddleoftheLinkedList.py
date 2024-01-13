@@ -16,3 +16,21 @@
 # Constraints:
 # The number of nodes in the list is in the range [1, 100].
 # 1 <= Node.val <= 100
+# Definition for singly-linked list.
+
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def middleNode(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        one =  head
+        two = head
+        while two and two.next:
+            one = one.next
+            two = two.next.next
+        return one

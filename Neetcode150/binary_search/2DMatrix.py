@@ -24,11 +24,11 @@ class Solution:
         cols = len(matrix[0])
         
         # Initialize pointers for binary search
-        left, right = 0, rows * cols - 1  
+        row_start, col_end = 0, rows * cols - 1  
         
-        while left <= right:  
+        while row_start <= col_end:  
             # Calculate the middle element index
-            mid = (left + right) // 2
+            mid = (row_start + col_end) // 2
             
             # Get the value of the middle element
             mid_val = matrix[mid // cols][mid % cols]  # Mid_val = Matrix[mid_row][mid_col]
@@ -37,11 +37,11 @@ class Solution:
             if mid_val == target:  
                 return True  # Target found! Return true
             elif mid_val < target:  
-                # If the target is greater than the middle element, move right pointer to mid + 1
-                left = mid + 1  
+                # If the target is greater than the middle element, move col_end pointer to mid + 1
+                row_start = mid + 1  
             else:
-                # If the target is less than the middle element, move left pointer to mid - 1
-                right = mid - 1
+                # If the target is less than the middle element, move row_start pointer to mid - 1
+                col_end = mid - 1
         
         return False  # Target not found in matrix (loop completes without finding target)
 
